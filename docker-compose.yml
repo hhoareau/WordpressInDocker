@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  db:
+    container_name: f80_db_container
+    image: mysql:5.7
+    # restart: unless-stopped
+    volumes:
+    - /home/pi/f80/db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: hh4271!!
+      MYSQL_DATABASE: f80_db
+      MYSQL_USER: f80_user
+      MYSQL_PASSWORD: hh4271
+    networks:
+      back:
+
+  wordpress:
+    depends_on:
+    - db
+    container_name: f80_wp_container
+    image: wordpress:latest
+    #restart: unless-stopped
+    volumes:
+    - /home/pi/f80/wordpress/core:/var/www/html
+    - /home/pi/f80/wordpress/wp-content:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: f80_db:3306
+      WORDPRESS_DB_NAME: f80_db
+      WORDPRESS_DB_USER: f80_user
+      WORDPRESS_DB_PASSWORD: hh4271
+      WORDPRESS_TABLE_PREFIX: mswp_
+    ports:
+    - 80:80
+    - 443:443
+    networks:
+      back:
+
+
+networks:
+- back:
