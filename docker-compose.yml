@@ -1,12 +1,12 @@
 #Voir https://www.gasbayet.fr/blog/2018/02/06/docker-compose-wordpress-tutoriel-debutant.html
-version: '3'
+version: '3.3'
 
 services:
   db:
     container_name: f80_db_container
 
     image: hypriot/rpi-mysql
-    # restart: unless-stopped
+    restart: always
 
     volumes:
     - /home/pi/f80/db_data:/var/lib/mysql
@@ -23,7 +23,8 @@ services:
     - db
 
     container_name: f80_wp_container
-    image: arm32v7/wordpress
+    image: arm64v8/wordpress
+    restart: always
     volumes:
     - /home/pi/f80/wordpress/core:/var/www/html
     - /home/pi/f80/wordpress/wp-content:/var/www/html/wp-content
@@ -35,5 +36,5 @@ services:
       WORDPRESS_TABLE_PREFIX: mswp_
 
     ports:
-    - 80:80
-    - 443:443
+    - "8000:80"
+    - "443:443"
