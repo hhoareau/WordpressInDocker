@@ -36,5 +36,5 @@ services:
       WORDPRESS_TABLE_PREFIX: mswp_
 
     ports:
-    - "8000:80"
-    - "443:443"
+    - 8000:80
+    - 443:443
