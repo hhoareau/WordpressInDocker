@@ -23,7 +23,7 @@ services:
     - db
 
     container_name: f80_wp_container
-    image: arm64v8/wordpress
+    image: arm32v7/wordpress
     restart: always
     volumes:
     - /home/pi/f80/wordpress/core:/var/www/html
