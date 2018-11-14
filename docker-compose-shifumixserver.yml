@@ -1,0 +1,42 @@
+#Voir https://www.gasbayet.fr/blog/2018/02/06/docker-compose-wordpress-tutoriel-debutant.html
+version: '3.3'
+
+services:
+  db:
+    container_name: shifumix_db_container
+
+    image: mariadb:latest
+    restart: always
+
+    volumes:
+    - /home/shifumix/db_data:/var/lib/mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: hh4271!!
+      MYSQL_DATABASE: shifumix_db
+      MYSQL_USER: shifumix_user
+      MYSQL_PASSWORD: hh4271
+
+
+  wordpress:
+    depends_on:
+    - db
+
+    container_name: shifumix_wp_container
+    image: wordpress:latest
+    restart: always
+    volumes:
+    - /home/shifumix/wordpress/core:/var/www/html
+    - /home/shifumix/wordpress/wp-content:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: shifumix_db
+      WORDPRESS_DB_USER: shifumix_user
+      WORDPRESS_DB_PASSWORD: hh4271
+      WORDPRESS_TABLE_PREFIX: mswp_
+      VIRTUAL_HOST: shifumix.com
+      LETSENCRYPT_HOST: shifumix.com
+      LETSENCRYPT_EMAIL: admin@shifumix.com
+
+    ports:
+    - "8000:80"
