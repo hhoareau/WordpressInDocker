@@ -34,6 +34,9 @@ services:
       WORDPRESS_DB_USER: f80_user
       WORDPRESS_DB_PASSWORD: hh4271
       WORDPRESS_TABLE_PREFIX: mswp_
+      VIRTUAL_HOST: f80.fr
+      LETSENCRYPT_HOST: f80.fr
+      LETSENCRYPT_EMAIL: rv@f80.fr 
 
     ports:
     - "8000:80"
