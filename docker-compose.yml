@@ -5,7 +5,7 @@ services:
   db:
     container_name: f80_db_container
 
-    image: hypriot/rpi-mysql
+    image: tobi312/rpi-mysql
     restart: always
 
     volumes:
