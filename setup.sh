@@ -1,5 +1,6 @@
 sudo curl -sSL get.docker.com | sh
 sudo apt-get install -y python-pip
+sudo pip install setuptools
 sudo pip install docker-compose
 
 rm docker-compose.yml
