@@ -28,6 +28,7 @@ services:
     volumes:
     - /home/pi/f80/wordpress/core:/var/www/html
     - /home/pi/f80/wordpress/wp-content:/var/www/html/wp-content
+    - /home/pi/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: f80_db
