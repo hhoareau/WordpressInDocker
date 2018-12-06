@@ -13,4 +13,4 @@ echo "max_execution_time = 600" >> upload.ini
 
 rm docker-compose.yml
 wget https://raw.githubusercontent.com/hhoareau/WordpressInDocker/master/docker-compose.yml
-docker-compose up -d
+sudo docker-compose up -d
